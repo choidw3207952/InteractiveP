@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>highly relevant book search application</title>
+    <!--Title name-->
+    <!--Main page!!!!-->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!--Link Css file-->
+</head>
+
+<body>
+    <header>
+        <div class="logo" id="logo-id">
+            <!--Header Logo-->
+            <h1>Book search application</h1>
+        </div>
+        <nav>
+            <!--Navigation (using list)-->
+            <ul>
+                <li><a href="index.html">Main</a></li>
+                <li><a href="map.html">How to buy book?</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="hero">
+            <img class="img-hero" src="assets/img/book.jpeg" alt="churchill house show">
+            <!--Below header pic-->
+        </div>
+        <div class="wrapper">
+            <h1>Welcome to best seller book search application!</h1>
+            <!--Welcome comment-->
+            <div class="hrsetting">
+                <!--Line setting-->
+                <br>
+            </div>
+            <div id="sidebar">
+                <!--sidebar-->
+                <h3>About this site</h3><br>
+                <strong>Related Pages:</strong> <br><br> <a href="http://www.kyobobook.co.kr/">Kyobo Bookstore</a><br><br><br>
+                <strong>Search Engine: </strong> <br><br><a
+                    href="https://www.kakaocorp.com/service/Daum?lang=en">Daum Kakao</a><br><br>
+                <hr>
+                <div id="sidebarcolor">
+                    <ul>
+                        <li>Usage: <br>Select options to search and enter keyword
+                        </li>
+                    </ul> 
+                    <hr>
+                    <ul>
+                        <li>Please select navigation to get information on the page you want</li>
+                    </ul>
+                    <hr>
+                    <ul>
+                        <li>If you have any problems, please send me an email <br>u3207952@<br>uni.canberra.edu.au</li>
+                    </ul>
+                </div>
+            </div>
+            <section id="resultsearch">
+                <!--<h1>Book search</h1>-->
+                <h3>Choose search option</h3>
+                <button id="button1">Accuracy</button>
+                <button id="button2"><a href="latestsearch.html">Latest</a></button>
+                <br>
+                <p>Show the results of the most accuracy book</p>
+                <input id="bookName" value="" type="text" size="50">&nbsp;
+
+                <button id="search">Search</button> &ensp;<a href="index.html">reset</a>
+
+                <br><br> <hr><hr><br>
+                <msg></msg>
+                <script src="https://code.jquery.com/jquery-3.4.1.js"
+                    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+                <script>
+                    $(document).ready(function () {
+                        $("#search").click(function () {
+                                $.ajax({
+                                method: "GET",
+                                url: "https://dapi.kakao.com/v3/search/book?target=title",
+                                data: { query: $("#bookName").val()},
+                                headers: { Authorization: "KakaoAK d92adde9253b091d02add41e84aadaf9" }
+                            })
+
+                                .done(function (msg) {
+                                    console.log(msg.documents[0].title);
+                                    console.log(msg.documents[0].thumbnail);
+                                    $("msg").append("<strong>Title: " + msg.documents[0].title + "</strong>");
+                                    $("msg").append("<br><br>");
+                                    $("msg").append("<img src='" + msg.documents[0].thumbnail + "'/>");
+                                    $("msg").append("<br><br>");
+                                    $("msg").append("<strong>Author: </strong>");
+                                    $("msg").append("<p> " + msg.documents[0].authors + "</p>");
+                                    //$("msg").append("<strong>Publisher: </strong>");
+                                    //$("msg").append("<p> " + msg.documents[0].publisher + "</p>");
+                                    $("msg").append("<strong>Price: </strong>");
+                                    $("msg").append("<p> " + msg.documents[0].price + "</p>");
+                                    $("msg").append("<strong>Description: </strong>");
+                                    $("msg").append("<p> " + msg.documents[0].contents + "</p>");
+                                    $("msg").append("<a href=" + msg.documents[0].url + "> Read more </a>");
+                                    $("msg").append("<hr><br>");
+                                });
+
+
+                        });
+                    });
+                </script>
+
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>

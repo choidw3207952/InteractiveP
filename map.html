@@ -1,0 +1,63 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+    <title>highly relevant book search application</title>
+    <!--Title name-->
+    <!--Main page!!!!-->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!--Link Css file-->
+</head>
+
+
+<body>
+    <header>
+        <div class="logo" id="logo-id">
+            <!--Header Logo-->
+            <h1>Book search application</h1>
+        </div>
+        <nav>
+            <!--Navigation (using list)-->
+            <ul>
+                <li><a href="index.html">Main</a></li>
+                <li><a href="map.html">How to buy book?</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="hero">
+        <img class="img-hero" src="assets/img/book.jpeg" alt="churchill house show">
+        <!--Below header pic-->
+    </div>
+    <div class="wrapper">
+        <h1>Book store location</h1>
+        <h4>So.. How to buy search result's book? Here is book store information! </h4>
+        <!--Welcome comment-->
+        <div class="hrsetting">
+            <!--Line setting-->
+            <br>
+        </div>
+        <div id="sidebar">
+            <!--sidebar-->
+            <h3>About this site</h3><br>
+            <strong>Related Pages:</strong> <br><br> <a href="http://www.kyobobook.co.kr/">Kyobo Bookstore</a><br><br><br>
+            <strong>Search Engine: </strong> <br><br><a
+                href="https://www.kakaocorp.com/service/Daum?lang=en">Daum Kakao</a><br><br>
+            <hr><br>
+            <div id="sidebarcolor">
+            </div>
+        </div>
+
+        <h2>Kyobo Book store</h2>
+        <a href="http://www.kyobobook.co.kr/index.laf?OV_REFFER=https://www.google.com/">Online store</a><br><br>
+        <hr>
+        <h3>Offline store</h3>
+        <h4>- Kyobo Book store in Seoul</h4>
+        <div id="map1" style="width:70%; height: 60vh;"></div>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMH5ZNzCpFqrRhl77Wvdy7jdqUW8P56pY&callback=initMap"></script>
+        <script src="./script.js"></script>
+        <br><a href="https://goo.gl/maps/y5JA4wwVQp8W1KyZ7">Go google map</a>
+    </div>
+</body>
+</html>
